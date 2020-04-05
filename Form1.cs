@@ -17,9 +17,11 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
         List<int> frecuenciaObservada;
-        List<double> listaIntervalos;
+        List<double> finIntervalos;
+        List<double> comienzoIntervalos;
+        
 
-        TesterChiCuadrado tester;
+        ListaFrecuenciaObservada tester;
 
         List<double> lista = new List<double>();
 
@@ -39,16 +41,18 @@ namespace WindowsFormsApp1
         }
 
         void configurarDataGridViews() {
-            dgvFrecuencia.ColumnCount = 3;
+            dgvFrecuencia.ColumnCount = 4;
             dgvFrecuencia.Columns[0].HeaderText = "Desde";
             dgvFrecuencia.Columns[1].HeaderText = "Hasta";
             dgvFrecuencia.Columns[2].HeaderText = "Frec. Observada";
+            dgvFrecuencia.Columns[3].HeaderText = "Frec. Esperada";
+
+            dgvFrecuencia.Columns[0].Width = 50;
+            dgvFrecuencia.Columns[1].Width = 50;
 
             dgvLista.ColumnCount = 1;
             dgvLista.Columns[0].HeaderText = "valor";
             
-            //dgvFrecuencia.Columns[0].Width = 50;
-            //dgvFrecuencia.Columns[1].Width = 100;
 
 
            // LLENAR CON FOR:
@@ -72,14 +76,16 @@ namespace WindowsFormsApp1
 
         private void btnTestChi_Click(object sender, EventArgs e)
         {
-            tester = new TesterChiCuadrado();
+            tester = new ListaFrecuenciaObservada();
 
             frecuenciaObservada = tester.obtenerFrecuencia(lista);
-            listaIntervalos = tester.rangosIntervalos;
+            finIntervalos = tester.finIntervalos;
+            comienzoIntervalos = tester.comienzoIntervalos;
+            double frecuenciaEsperada = tester.obtenerFrecuenciaEsperada();
 
             for (int i = 0; i < frecuenciaObservada.Count; i++)
             {
-                dgvFrecuencia.Rows.Add("", listaIntervalos[i],frecuenciaObservada[i]);
+                dgvFrecuencia.Rows.Add(comienzoIntervalos[i], finIntervalos[i],frecuenciaObservada[i],frecuenciaEsperada);
             }
         }
 
@@ -95,6 +101,16 @@ namespace WindowsFormsApp1
             {
                 agregarValorALista();
             }
+        }
+
+        private void txtLista_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label1.Text = tester.obtenerChiCuadrado().ToString();
         }
     }
 }

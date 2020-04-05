@@ -31,8 +31,9 @@
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.txtLista = new System.Windows.Forms.TextBox();
             this.dgvFrecuencia = new System.Windows.Forms.DataGridView();
-            this.btnCargar = new System.Windows.Forms.Button();
             this.btnTestChiCuadrado = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrecuencia)).BeginInit();
             this.SuspendLayout();
@@ -40,43 +41,34 @@
             // dgvLista
             // 
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Location = new System.Drawing.Point(12, 38);
+            this.dgvLista.Location = new System.Drawing.Point(12, 139);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(146, 400);
+            this.dgvLista.Size = new System.Drawing.Size(146, 299);
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtLista
             // 
-            this.txtLista.Location = new System.Drawing.Point(12, 12);
+            this.txtLista.Location = new System.Drawing.Point(528, 418);
             this.txtLista.Name = "txtLista";
             this.txtLista.Size = new System.Drawing.Size(260, 20);
             this.txtLista.TabIndex = 1;
+            this.txtLista.TextChanged += new System.EventHandler(this.txtLista_TextChanged);
             this.txtLista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLista_KeyDown);
             this.txtLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista_KeyPress);
             // 
             // dgvFrecuencia
             // 
             this.dgvFrecuencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFrecuencia.Location = new System.Drawing.Point(164, 38);
+            this.dgvFrecuencia.Location = new System.Drawing.Point(164, 139);
             this.dgvFrecuencia.Name = "dgvFrecuencia";
-            this.dgvFrecuencia.Size = new System.Drawing.Size(270, 400);
+            this.dgvFrecuencia.Size = new System.Drawing.Size(345, 299);
             this.dgvFrecuencia.TabIndex = 0;
             this.dgvFrecuencia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // btnCargar
-            // 
-            this.btnCargar.Location = new System.Drawing.Point(278, 10);
-            this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(75, 23);
-            this.btnCargar.TabIndex = 2;
-            this.btnCargar.Text = "Cargar";
-            this.btnCargar.UseVisualStyleBackColor = true;
-            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
-            // 
             // btnTestChiCuadrado
             // 
-            this.btnTestChiCuadrado.Location = new System.Drawing.Point(359, 10);
+            this.btnTestChiCuadrado.Location = new System.Drawing.Point(515, 38);
             this.btnTestChiCuadrado.Name = "btnTestChiCuadrado";
             this.btnTestChiCuadrado.Size = new System.Drawing.Size(75, 23);
             this.btnTestChiCuadrado.TabIndex = 2;
@@ -84,13 +76,33 @@
             this.btnTestChiCuadrado.UseVisualStyleBackColor = true;
             this.btnTestChiCuadrado.Click += new System.EventHandler(this.btnTestChi_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(528, 271);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "btnChiCuadrado";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(634, 276);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnTestChiCuadrado);
-            this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.txtLista);
             this.Controls.Add(this.dgvFrecuencia);
             this.Controls.Add(this.dgvLista);
@@ -109,8 +121,9 @@
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.TextBox txtLista;
         private System.Windows.Forms.DataGridView dgvFrecuencia;
-        private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.Button btnTestChiCuadrado;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

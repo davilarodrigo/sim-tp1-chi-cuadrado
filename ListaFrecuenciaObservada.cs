@@ -7,11 +7,37 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public class TesterChiCuadrado
+    public class ListaFrecuenciaObservada
     {
 
+        public List<double> comienzoIntervalos;
+        public List<double> finIntervalos;
 
-        public List<double> rangosIntervalos;
+        public List<int> frecuenciasObservadas; 
+
+        
+
+        int n;
+        int k;
+
+        public int obtenerFrecuenciaEsperada()
+        {
+            return (int) Math.Floor( (double)n / (double)k);
+        }
+
+        public double obtenerChiCuadrado()
+        {
+            int frecuenciaEsperada = obtenerFrecuenciaEsperada();
+
+            double sumatoria=0;
+
+            for (int i = 0; i < k; i++)
+            {
+                sumatoria+=(Math.Pow(frecuenciasObservadas[i] - (double)frecuenciaEsperada,2)) / (double) frecuenciaEsperada;
+            }
+
+            return sumatoria;
+        }
 
         public List<int> obtenerFrecuencia(List<double> muestra)
         {
@@ -21,36 +47,37 @@ namespace WindowsFormsApp1
             int k;
             int n;
             n = muestra.Count;
-            k = (int) Math.Ceiling(Math.Sqrt(n));
+            k = (int) Math.Floor(Math.Sqrt(n));
             
             return obtenerFrecuencia(muestra, k);
         }
 
         public List<int> obtenerFrecuencia(List<double> muestra, int intervalos)
         {
-            int n = muestra.Count;
-            int k = intervalos;
+            n = muestra.Count;
+            k = intervalos;
             //double limiteDelIntervalo; 
 
-            List<int> frecuenciaObservada = new List<int>();
-            rangosIntervalos = new List<double>();
-                       
+            frecuenciasObservadas = new List<int>();
+            finIntervalos = new List<double>();
+            comienzoIntervalos = new List<double>();
+
             //la lista frec observada tiene q tener la misma longitud q la de intervalos
             //y se inicializa con todo en cero
             for (int i = 0; i < k; i++)
             {//este for se puede hacer en un solo reglon?¿¿
-                frecuenciaObservada.Add(0);
+                frecuenciasObservadas.Add(0);
             }
 
+
+            double longitudIntervalo = (double) ((double)1) / ((double)k);
             //i deberia empezar en 1
             for (int i = 1; i <= k; i++)
-            {
-                double dividendo = Convert.ToDouble(i);
-                double divisor = Convert.ToDouble(k);
-                
+            {                               
                 double limiteDelIntervalo = (double) ((double) i) / ((double) k);
-              
-                rangosIntervalos.Add(limiteDelIntervalo);
+
+                comienzoIntervalos.Add(limiteDelIntervalo - longitudIntervalo);
+                finIntervalos.Add(limiteDelIntervalo);
             }
 
             for (int i = 0; i < n; i++)
@@ -63,9 +90,9 @@ namespace WindowsFormsApp1
                     //de intervalos (es decir, es menor al valor maximo del intervalo), entonces al valor "j"
                     //de la lista de frecuencia observada, se le suma uno
 
-                    if (muestra[i]<rangosIntervalos[j])
+                    if (muestra[i]<finIntervalos[j])
                     {
-                        frecuenciaObservada[j]++;
+                        frecuenciasObservadas[j]++;
                         break;
                     }
 
@@ -73,7 +100,7 @@ namespace WindowsFormsApp1
                 }
             }
 
-            return frecuenciaObservada;
+            return frecuenciasObservadas;
 
         }
 
