@@ -1,0 +1,10 @@
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.pdb
