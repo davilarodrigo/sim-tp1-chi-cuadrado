@@ -8,3 +8,4 @@ C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1
 C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.Grafico.resources

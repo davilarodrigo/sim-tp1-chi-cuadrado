@@ -16,14 +16,23 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        List<int> frecuenciaObservada;
+        List<int> frecuenciasObservada;
         List<double> finIntervalos;
         List<double> comienzoIntervalos;
-        
+        int frecuenciaEsperada;
+
+        bool cantidadIntervalosManual;
 
         ListaFrecuenciaObservada tester;
 
         List<double> lista = new List<double>();
+
+        void actualizarInterfaz()
+        {
+            cantidadIntervalosManual = rdbManual.Checked;
+            txtCantidadIntervalos.Enabled = cantidadIntervalosManual;
+            
+        }
 
         void agregarValorALista()
         {
@@ -78,15 +87,36 @@ namespace WindowsFormsApp1
         {
             tester = new ListaFrecuenciaObservada();
 
-            frecuenciaObservada = tester.obtenerFrecuencia(lista);
+
+            if (cantidadIntervalosManual)
+            {
+                if (txtCantidadIntervalos.Text=="")
+                {
+                    MessageBox.Show("Ingrese Una Cantidad de intervalos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int cantidadIntervalos = Convert.ToInt32( txtCantidadIntervalos.Text);
+
+                frecuenciasObservada = tester.obtenerFrecuencia(lista,cantidadIntervalos);
+            }
+            else
+            {
+            frecuenciasObservada = tester.obtenerFrecuencia(lista);
+                
+            }
+
+
             finIntervalos = tester.finIntervalos;
             comienzoIntervalos = tester.comienzoIntervalos;
-            double frecuenciaEsperada = tester.obtenerFrecuenciaEsperada();
+            frecuenciaEsperada = tester.obtenerFrecuenciaEsperada();
 
-            for (int i = 0; i < frecuenciaObservada.Count; i++)
+            for (int i = 0; i < frecuenciasObservada.Count; i++)
             {
-                dgvFrecuencia.Rows.Add(comienzoIntervalos[i], finIntervalos[i],frecuenciaObservada[i],frecuenciaEsperada);
+                dgvFrecuencia.Rows.Add(comienzoIntervalos[i], finIntervalos[i],frecuenciasObservada[i],frecuenciaEsperada);
             }
+
+            label1.Text = tester.obtenerChiCuadrado().ToString();
         }
 
 
@@ -110,7 +140,33 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = tester.obtenerChiCuadrado().ToString();
+
+        }
+
+        private void rdbAutomatico_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarInterfaz();
+        }
+
+        private void rdbManual_CheckedChanged(object sender, EventArgs e)
+        {
+            actualizarInterfaz();
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;
+        }
+
+        private void txtCantidadIntervalos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Grafico grafico = new Grafico(frecuenciasObservada, frecuenciaEsperada);
+            grafico.ShowDialog();
         }
     }
 }
