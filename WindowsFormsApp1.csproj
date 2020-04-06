@@ -47,26 +47,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmGeneradorPesudoAleatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGeneradorPesudoAleatorio.designer.cs">
+      <DependentUpon>FrmGeneradorPesudoAleatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAnalisisChiCuadrado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAnalisisChiCuadrado.Designer.cs">
       <DependentUpon>FrmAnalisisChiCuadrado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Grafico.cs">
+    <Compile Include="FrmMenuPrincipalReCheto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Grafico.Designer.cs">
-      <DependentUpon>Grafico.cs</DependentUpon>
+    <Compile Include="FrmMenuPrincipalReCheto.Designer.cs">
+      <DependentUpon>FrmMenuPrincipalReCheto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGrafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGrafico.Designer.cs">
+      <DependentUpon>FrmGrafico.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AnalizadorDeMuestra.cs" />
+    <Compile Include="SecuenciaPseudoAleatoria.cs" />
+    <EmbeddedResource Include="FrmGeneradorPesudoAleatorio.resx">
+      <DependentUpon>FrmGeneradorPesudoAleatorio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAnalisisChiCuadrado.resx">
       <DependentUpon>FrmAnalisisChiCuadrado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Grafico.resx">
-      <DependentUpon>Grafico.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMenuPrincipalReCheto.resx">
+      <DependentUpon>FrmMenuPrincipalReCheto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGrafico.resx">
+      <DependentUpon>FrmGrafico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

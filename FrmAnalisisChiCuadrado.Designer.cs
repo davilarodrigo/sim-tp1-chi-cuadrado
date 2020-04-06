@@ -119,11 +119,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 72);
+            this.label2.Location = new System.Drawing.Point(11, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Cantida a Utilizar";
+            this.label2.Text = "Cantidad a Utilizar";
             // 
             // txtCantidadIntervalos
             // 

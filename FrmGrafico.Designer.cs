@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Grafico
+    partial class FrmGrafico
     {
         /// <summary>
         /// Required designer variable.
@@ -46,13 +46,13 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // Grafico
+            // FrmGrafico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chart1);
-            this.Name = "Grafico";
+            this.Name = "FrmGrafico";
             this.Text = "Grafico";
             this.Load += new System.EventHandler(this.Grafico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();

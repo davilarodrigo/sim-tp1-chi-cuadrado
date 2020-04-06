@@ -9,3 +9,15 @@ C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1
 C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.Grafico.resources
 C:\Users\Familia\Desktop\4to\SIM\sim-tp1-chi-cuadrado\obj\Debug\WindowsFormsApp1.FrmAnalisisChiCuadrado.resources
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\bin\Debug\WindowsFormsApp1.exe.config
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\bin\Debug\WindowsFormsApp1.exe
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\bin\Debug\WindowsFormsApp1.pdb
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmAnalisisChiCuadrado.resources
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.exe
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.pdb
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmGeneradorPseudoAleatorio.resources
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmMenuPrincipalReCheto.resources
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmGrafico.resources

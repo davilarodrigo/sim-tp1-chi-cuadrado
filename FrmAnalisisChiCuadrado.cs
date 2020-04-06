@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
 
         void cargarGridMuestra()
         {
-            dgvMuestra.Rows.Clear();
+            this.dgvMuestra.Rows.Clear();
             for (int i = 0; i < muestra.Count; i++)
             {
                 dgvMuestra.Rows.Add(muestra[i]);
@@ -103,7 +103,8 @@ namespace WindowsFormsApp1
             grpGeneradorMuestra.Enabled = false;
             grpAgregarValor.Enabled = false;
 
-            cargarGridMuestra();
+            this.configurarDataGridViews();
+            this.cargarGridMuestra();
         }
 
         public FrmAnalisisChiCuadrado()
@@ -196,7 +197,8 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            Grafico grafico = new Grafico(frecuenciasObservada, frecuenciaEsperada);
+            FrmGrafico grafico = new FrmGrafico(frecuenciasObservada, frecuenciaEsperada);
+            //grafico.recibirParametro();
             grafico.ShowDialog();
         }
 

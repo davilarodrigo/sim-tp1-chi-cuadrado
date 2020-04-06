@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Grafico : Form
+    public partial class FrmGrafico : Form
     {
         List<int> frecuenciasObservadas;
         int frecuenciaEsperada;
 
-        public Grafico(List<int> frecuenciasObservadas, int frecuenciaEsperada)
+        public FrmGrafico(List<int> frecuenciasObservadas, int frecuenciaEsperada)
         {
             this.frecuenciasObservadas = frecuenciasObservadas;
             this.frecuenciaEsperada = frecuenciaEsperada;
             InitializeComponent();
         }
-        
+    
 
         private void Grafico_Load(object sender, EventArgs e)
         {
@@ -33,15 +33,15 @@ namespace WindowsFormsApp1
             chart.AxisY.Minimum = 0;
 
             chart.AxisX.Interval = 1;
-            chart.AxisY.Interval = 1;
+            //chart.AxisY.Interval = 1;
 
             chart1.Series.Add("Observada");
             chart1.Series["Observada"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            chart1.Series["Observada"].Color = Color.DarkCyan;
+            chart1.Series["Observada"].Color = Color.Red;
 
             chart1.Series.Add("Esperada");
             chart1.Series["Esperada"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            chart1.Series["Esperada"].Color = Color.Blue;
+            chart1.Series["Esperada"].Color = Color.Black;
 
             for (int i = 0; i < frecuenciasObservadas.Count; i++)
             {
