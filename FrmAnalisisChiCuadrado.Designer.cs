@@ -39,15 +39,15 @@
             this.rdbAutomatico = new System.Windows.Forms.RadioButton();
             this.rdbManual = new System.Windows.Forms.RadioButton();
             this.grpGeneradorMuestra = new System.Windows.Forms.GroupBox();
+            this.btnEliminarMuestra = new System.Windows.Forms.Button();
             this.btnGenerarNumerosAleatorios = new System.Windows.Forms.Button();
+            this.txtDecimales = new System.Windows.Forms.TextBox();
             this.txtTamañoMuestraAGenerar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.grpAgregarValor = new System.Windows.Forms.GroupBox();
             this.lblTamañoMuestra = new System.Windows.Forms.Label();
-            this.btnEliminarMuestra = new System.Windows.Forms.Button();
-            this.txtDecimales = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrecuencia)).BeginInit();
             this.grpIntervalos.SuspendLayout();
@@ -60,7 +60,7 @@
             this.dgvMuestra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMuestra.Location = new System.Drawing.Point(232, 12);
             this.dgvMuestra.Name = "dgvMuestra";
-            this.dgvMuestra.Size = new System.Drawing.Size(146, 299);
+            this.dgvMuestra.Size = new System.Drawing.Size(177, 295);
             this.dgvMuestra.TabIndex = 0;
             this.dgvMuestra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -77,17 +77,17 @@
             // dgvFrecuencia
             // 
             this.dgvFrecuencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFrecuencia.Location = new System.Drawing.Point(384, 12);
+            this.dgvFrecuencia.Location = new System.Drawing.Point(415, 12);
             this.dgvFrecuencia.Name = "dgvFrecuencia";
-            this.dgvFrecuencia.Size = new System.Drawing.Size(404, 299);
+            this.dgvFrecuencia.Size = new System.Drawing.Size(373, 271);
             this.dgvFrecuencia.TabIndex = 0;
             this.dgvFrecuencia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnTestChiCuadrado
             // 
-            this.btnTestChiCuadrado.Location = new System.Drawing.Point(232, 317);
+            this.btnTestChiCuadrado.Location = new System.Drawing.Point(12, 284);
             this.btnTestChiCuadrado.Name = "btnTestChiCuadrado";
-            this.btnTestChiCuadrado.Size = new System.Drawing.Size(146, 23);
+            this.btnTestChiCuadrado.Size = new System.Drawing.Size(214, 23);
             this.btnTestChiCuadrado.TabIndex = 2;
             this.btnTestChiCuadrado.Text = "Analizar Muestra";
             this.btnTestChiCuadrado.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             // lblChiCuadrado
             // 
             this.lblChiCuadrado.AutoSize = true;
-            this.lblChiCuadrado.Location = new System.Drawing.Point(557, 322);
+            this.lblChiCuadrado.Location = new System.Drawing.Point(540, 294);
             this.lblChiCuadrado.Name = "lblChiCuadrado";
             this.lblChiCuadrado.Size = new System.Drawing.Size(71, 13);
             this.lblChiCuadrado.TabIndex = 4;
@@ -108,12 +108,13 @@
             this.grpIntervalos.Controls.Add(this.txtCantidadIntervalos);
             this.grpIntervalos.Controls.Add(this.rdbAutomatico);
             this.grpIntervalos.Controls.Add(this.rdbManual);
-            this.grpIntervalos.Location = new System.Drawing.Point(12, 12);
+            this.grpIntervalos.Location = new System.Drawing.Point(12, 3);
             this.grpIntervalos.Name = "grpIntervalos";
             this.grpIntervalos.Size = new System.Drawing.Size(214, 103);
             this.grpIntervalos.TabIndex = 5;
             this.grpIntervalos.TabStop = false;
             this.grpIntervalos.Text = "Cantidad de Intervalos";
+            this.grpIntervalos.Enter += new System.EventHandler(this.grpIntervalos_Enter);
             // 
             // label2
             // 
@@ -165,12 +166,22 @@
             this.grpGeneradorMuestra.Controls.Add(this.txtTamañoMuestraAGenerar);
             this.grpGeneradorMuestra.Controls.Add(this.label1);
             this.grpGeneradorMuestra.Controls.Add(this.label3);
-            this.grpGeneradorMuestra.Location = new System.Drawing.Point(12, 121);
+            this.grpGeneradorMuestra.Location = new System.Drawing.Point(12, 112);
             this.grpGeneradorMuestra.Name = "grpGeneradorMuestra";
             this.grpGeneradorMuestra.Size = new System.Drawing.Size(214, 112);
             this.grpGeneradorMuestra.TabIndex = 6;
             this.grpGeneradorMuestra.TabStop = false;
             this.grpGeneradorMuestra.Text = "Generar Muestra de Numeros Aleatorios";
+            // 
+            // btnEliminarMuestra
+            // 
+            this.btnEliminarMuestra.Location = new System.Drawing.Point(6, 81);
+            this.btnEliminarMuestra.Name = "btnEliminarMuestra";
+            this.btnEliminarMuestra.Size = new System.Drawing.Size(96, 23);
+            this.btnEliminarMuestra.TabIndex = 3;
+            this.btnEliminarMuestra.Text = "Eliminar Muestra";
+            this.btnEliminarMuestra.UseVisualStyleBackColor = true;
+            this.btnEliminarMuestra.Click += new System.EventHandler(this.btnEliminarMuestra_Click);
             // 
             // btnGenerarNumerosAleatorios
             // 
@@ -182,6 +193,15 @@
             this.btnGenerarNumerosAleatorios.UseVisualStyleBackColor = true;
             this.btnGenerarNumerosAleatorios.Click += new System.EventHandler(this.btnGenerarNumerosAleatorios_Click);
             // 
+            // txtDecimales
+            // 
+            this.txtDecimales.Location = new System.Drawing.Point(108, 55);
+            this.txtDecimales.Name = "txtDecimales";
+            this.txtDecimales.Size = new System.Drawing.Size(100, 20);
+            this.txtDecimales.TabIndex = 1;
+            this.txtDecimales.Text = "4";
+            this.txtDecimales.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
             // txtTamañoMuestraAGenerar
             // 
             this.txtTamañoMuestraAGenerar.Location = new System.Drawing.Point(108, 29);
@@ -190,6 +210,15 @@
             this.txtTamañoMuestraAGenerar.TabIndex = 1;
             this.txtTamañoMuestraAGenerar.Text = "30";
             this.txtTamañoMuestraAGenerar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Maximo Decimales";
             // 
             // label3
             // 
@@ -202,18 +231,18 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(672, 317);
+            this.button2.Location = new System.Drawing.Point(672, 289);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 23);
             this.button2.TabIndex = 7;
-            this.button2.Text = "Generar Grafico";
+            this.button2.Text = "Mostrar Grafico";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // grpAgregarValor
             // 
             this.grpAgregarValor.Controls.Add(this.txtLista);
-            this.grpAgregarValor.Location = new System.Drawing.Point(12, 239);
+            this.grpAgregarValor.Location = new System.Drawing.Point(12, 230);
             this.grpAgregarValor.Name = "grpAgregarValor";
             this.grpAgregarValor.Size = new System.Drawing.Size(214, 48);
             this.grpAgregarValor.TabIndex = 9;
@@ -224,45 +253,17 @@
             // lblTamañoMuestra
             // 
             this.lblTamañoMuestra.AutoSize = true;
-            this.lblTamañoMuestra.Location = new System.Drawing.Point(396, 321);
+            this.lblTamañoMuestra.Location = new System.Drawing.Point(425, 294);
             this.lblTamañoMuestra.Name = "lblTamañoMuestra";
             this.lblTamañoMuestra.Size = new System.Drawing.Size(87, 13);
             this.lblTamañoMuestra.TabIndex = 10;
             this.lblTamañoMuestra.Text = "Tamaño Muestra";
             // 
-            // btnEliminarMuestra
-            // 
-            this.btnEliminarMuestra.Location = new System.Drawing.Point(6, 81);
-            this.btnEliminarMuestra.Name = "btnEliminarMuestra";
-            this.btnEliminarMuestra.Size = new System.Drawing.Size(96, 23);
-            this.btnEliminarMuestra.TabIndex = 3;
-            this.btnEliminarMuestra.Text = "Eliminar Muestra";
-            this.btnEliminarMuestra.UseVisualStyleBackColor = true;
-            this.btnEliminarMuestra.Click += new System.EventHandler(this.btnEliminarMuestra_Click);
-            // 
-            // txtDecimales
-            // 
-            this.txtDecimales.Location = new System.Drawing.Point(108, 55);
-            this.txtDecimales.Name = "txtDecimales";
-            this.txtDecimales.Size = new System.Drawing.Size(100, 20);
-            this.txtDecimales.TabIndex = 1;
-            this.txtDecimales.Text = "4";
-            this.txtDecimales.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Maximo Decimales";
-            // 
             // FrmAnalisisChiCuadrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 343);
+            this.ClientSize = new System.Drawing.Size(800, 317);
             this.Controls.Add(this.lblTamañoMuestra);
             this.Controls.Add(this.grpAgregarValor);
             this.Controls.Add(this.button2);
@@ -272,6 +273,10 @@
             this.Controls.Add(this.btnTestChiCuadrado);
             this.Controls.Add(this.dgvFrecuencia);
             this.Controls.Add(this.dgvMuestra);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(816, 356);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(816, 356);
             this.Name = "FrmAnalisisChiCuadrado";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     {
         #region declaracion variables
 
+        bool muestraAnalizada=false;
 
         List<int> frecuenciasObservada;
         List<double> limitesInferioresDeIntervalos;
@@ -83,6 +84,13 @@ namespace WindowsFormsApp1
             dgvMuestra.Rows.Clear();
             dgvFrecuencia.Rows.Clear();
 
+
+            lblTamañoMuestra.Text = "Tamaño Muestra";
+            lblChiCuadrado.Text = "Chi Cuadrado";
+
+
+            muestraAnalizada = false;
+
             muestra = null; 
             muestra = new List<double>();
         }
@@ -130,6 +138,7 @@ namespace WindowsFormsApp1
 
             dgvMuestra.ColumnCount = 1;
             dgvMuestra.Columns[0].HeaderText = "Muestra";
+            dgvMuestra.Columns[0].Width = 115;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -183,13 +192,21 @@ namespace WindowsFormsApp1
                 dgvFrecuencia.Rows.Add(limitesInferioresDeIntervalos[i], limitesSuperioresDeIntervalos[i],frecuenciasObservada[i],frecuenciaEsperada);
             }
 
-            lblTamañoMuestra.Text = "Tamaño Muestra =" + muestra.Count.ToString();
+            lblTamañoMuestra.Text = "Tamaño Muestra = " + muestra.Count.ToString();
             lblChiCuadrado.Text = "Chi Cuadrado = "+ analizadorDeMuestra.calcularChiCuadrado().ToString();
+
+            muestraAnalizada = true;
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!muestraAnalizada)
+            {
+                MessageBox.Show("Debe Generar y Analizar la muestra antes de generar el grafico", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Grafico grafico = new Grafico(frecuenciasObservada, frecuenciaEsperada);
             grafico.ShowDialog();
         }
@@ -255,6 +272,11 @@ namespace WindowsFormsApp1
         private void btnGenerarNumerosAleatorios_Click(object sender, EventArgs e)
         {
             generarMuestraAleatoria();
+        }
+
+        private void grpIntervalos_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

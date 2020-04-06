@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
                 sumatoria += (Math.Pow(frecuenciaObservada[i] - (double)frecuenciaEsperada, 2)) / (double)frecuenciaEsperada;
             }
 
-            return sumatoria;
+            return Math.Truncate(sumatoria* 100000)/100000;
         }
 
         public int obtenerFrecuenciaEsperada(int k)
