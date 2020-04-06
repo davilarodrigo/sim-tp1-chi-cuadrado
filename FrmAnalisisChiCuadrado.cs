@@ -99,8 +99,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.muestra = muestra;
+            
             grpGeneradorMuestra.Enabled = false;
             grpAgregarValor.Enabled = false;
+
+            cargarGridMuestra();
         }
 
         public FrmAnalisisChiCuadrado()
@@ -141,21 +144,7 @@ namespace WindowsFormsApp1
             dgvMuestra.Columns[0].Width = 115;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            configurarDataGridViews();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnCargar_Click(object sender, EventArgs e)
-        {
-            agregarValorAMuestra();
-        }
-
+     
         private void btnTestChi_Click(object sender, EventArgs e)
         {
             dgvFrecuencia.Rows.Clear();
@@ -212,6 +201,22 @@ namespace WindowsFormsApp1
         }
 
         #region otros
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            configurarDataGridViews();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            agregarValorAMuestra();
+        }
+
         private void txtLista_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;              
