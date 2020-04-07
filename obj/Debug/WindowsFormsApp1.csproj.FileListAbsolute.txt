@@ -19,5 +19,10 @@ E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.csp
 E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.exe
 E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.pdb
 E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmGeneradorPseudoAleatorio.resources
-E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmMenuPrincipalReCheto.resources
 E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmGrafico.resources
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.FrmMenuPrincipal.resources
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\Interop.Microsoft.Office.Core.dll
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\Interop.VBIDE.dll
+E:\Rodolfo\FACULTAD\4 Año\Simulación\parte2-TP1\obj\Debug\WindowsFormsApp1.csproj.ResolveComReference.cache

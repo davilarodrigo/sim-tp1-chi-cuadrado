@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FrmMenuPrincipalReCheto : Form
+    public partial class FrmMenuPrincipal : Form
     {
-        public FrmMenuPrincipalReCheto()
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
         }
@@ -27,6 +27,11 @@ namespace WindowsFormsApp1
         {
             FrmGeneradorPseudoAleatorio form = new FrmGeneradorPseudoAleatorio();
             form.ShowDialog();
+        }
+
+        private void buttonSalir_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

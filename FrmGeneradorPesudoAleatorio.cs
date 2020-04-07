@@ -15,11 +15,11 @@ namespace WindowsFormsApp1
     {          
         #region declaracion variables
         
-        // nose si van
+        // no se si van
         List<double> lista=new List<double>();
         bool listaGenerada = false;
         int indiceLista = 0;
-        int longitudLista = 20;
+        int longitudLista = 0;
         double valorTruncado;
         //---
         
@@ -38,12 +38,10 @@ namespace WindowsFormsApp1
 
         #region funciones
 
-       
-
         bool validarTextBoxs()
         {
             if (txtLongitudLista.Text == "") return false;
-            longitudLista= Convert.ToInt32(txtLongitudLista.Text);
+            longitudLista = Convert.ToInt32(txtLongitudLista.Text);
 
             if (txtValorRaiz.Text == "") return false;
             valorRaiz = Convert.ToInt32(txtValorRaiz.Text);
@@ -74,7 +72,9 @@ namespace WindowsFormsApp1
             {
                 if (valorRaiz % 2 == 0)
                 {
-                    txtValorRaiz.Text = "ingrese valor impar";
+                    txtValorRaiz.Text = "";
+                    //MessageBox.Show("Ingrese un valor impar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtValorRaiz.Focus();
                     return false;
                 }
             }
@@ -170,7 +170,7 @@ namespace WindowsFormsApp1
 
             lista.Add(valorTruncado);
 
-            lblNumero.Text = "Ultimo numero generado: " + valorTruncado.ToString();
+            lblNumero.Text = "Último número generado: " + valorTruncado.ToString();
                                  
             /*if (indiceLista == longitudLista)
             {
@@ -193,7 +193,11 @@ namespace WindowsFormsApp1
 
         private void btnGenerarNuevaLista_Click(object sender, EventArgs e)
         {
+            lista = new List<double>();
+            btnAnalisiChi.Enabled = false;
+            buttonExportarExcel.Enabled = false;
             btnGenerarNuevaLista.Enabled = false;
+            btnGenerarAdicional.Enabled = false;
             btnGenerar.Enabled = true;
             lblNumero.Text = "";
             indiceLista = 0;
@@ -215,10 +219,11 @@ namespace WindowsFormsApp1
             dataGridViewValoresLista.Rows.Clear();
             txtLongitudLista.Text = "";
             txtLongitudLista.Enabled = true;
-            button1.Enabled = false;
+            btnGenerarAdicional.Enabled = false;
             txtValorRaiz.Enabled = true;
             label2.Text = "Raiz Utilizada:";
             lblIteracion.Text = "Iteracion: ";
+            txtValorRaiz.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -229,11 +234,16 @@ namespace WindowsFormsApp1
             //k = Convert.ToInt32(txtK.Text);
             //g = Convert.ToInt32(txtG.Text);
             
-            if (!validarTextBoxs())            
+            if (!validarTextBoxs())
             {
-                MessageBox.Show("Porfavor ingrese un valor", "Valor incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor ingrese un valor", "Valor incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            this.btnAnalisiChi.Enabled = true;
+            this.buttonExportarExcel.Enabled = true;
+            this.btnGenerarAdicional.Enabled = true;
+            this.btnGenerarNuevaLista.Enabled = true;
 
             //generacion lista
             definirValores();
@@ -244,7 +254,7 @@ namespace WindowsFormsApp1
             
             //lista = generarLista();
             listaGenerada = true;
-            indiceLista = 1;
+            indiceLista = 0;
 
             for (int i = 0; i < longitudLista; i++)
             {
@@ -258,14 +268,14 @@ namespace WindowsFormsApp1
             btnGenerar.Enabled = false;
             if (indiceLista == (longitudLista + 1))
             {
-                button1.Enabled = true;
+                btnGenerarAdicional.Enabled = true;
                 btnGenerarNuevaLista.Enabled = true;
                 txtLongitudLista.Enabled = false;
                 groupBox4.Enabled = false;
                 groupBox2.Enabled = false;
                 groupBox1.Enabled = false;
             }
-                                         }        
+        }        
 
      
 
@@ -445,6 +455,47 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("No se ha generado una lista de valores", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonVolver_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void buttonExportarExcel_Click(object sender, EventArgs e)
+        {
+            // creating Excel Application  
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            // creating new WorkBook within Excel application  
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            // creating new Excelsheet in workbook  
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            // see the excel sheet behind the program  
+            app.Visible = true;
+            // get the reference of first sheet. By default its name is Sheet1.  
+            // store its reference to worksheet  
+            worksheet = workbook.Sheets["Hoja1"];
+            worksheet = workbook.ActiveSheet;
+            // changing the name of active sheet  
+            worksheet.Name = "Lista Aleatoria";
+            // storing header part in Excel  
+            for (int i = 1; i < this.dataGridViewValoresLista.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = this.dataGridViewValoresLista.Columns[i - 1].HeaderText;
+            }
+            // storing Each row and column value to excel sheet  
+            for (int i = 0; i < this.dataGridViewValoresLista.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < this.dataGridViewValoresLista.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = this.dataGridViewValoresLista.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+            // save the application
+            //workbook.SaveAs("E:\\Rodolfo\\FACULTAD\\4 Año\\Simulación\\TP1\\SimulacionTP1\\ExcelOutput\\output"+documentoExcel.ToString()+".xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            //documentoExcel += 1;
+            // Exit from the application  
+            //app.Quit();
         }
     }
 }

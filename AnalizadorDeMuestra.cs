@@ -37,8 +37,9 @@ namespace WindowsFormsApp1
 
             for (int i = 0; i < k; i++)
             {
-                sumatoria += (Math.Pow(frecuenciaObservada[i] - (double)frecuenciaEsperada, 2)) / (double)frecuenciaEsperada;
+                sumatoria += (Math.Pow(frecuenciaObservada[i] - (double)frecuenciaEsperada, 2));
             }
+            sumatoria /= (double)frecuenciaEsperada;
 
             return Math.Truncate(sumatoria* 100000)/100000;
         }

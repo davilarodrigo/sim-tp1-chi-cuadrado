@@ -21,6 +21,11 @@ namespace WindowsFormsApp1
             this.frecuenciaEsperada = frecuenciaEsperada;
             InitializeComponent();
         }
+
+        public System.Windows.Forms.DataVisualization.Charting.Chart devolverGrafico()
+        {
+            return chart1;
+        }
     
 
         private void Grafico_Load(object sender, EventArgs e)
@@ -37,11 +42,11 @@ namespace WindowsFormsApp1
 
             chart1.Series.Add("Observada");
             chart1.Series["Observada"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            chart1.Series["Observada"].Color = Color.Red;
+            chart1.Series["Observada"].Color = Color.CornflowerBlue;
 
             chart1.Series.Add("Esperada");
             chart1.Series["Esperada"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            chart1.Series["Esperada"].Color = Color.Black;
+            chart1.Series["Esperada"].Color = Color.Orange;
 
             for (int i = 0; i < frecuenciasObservadas.Count; i++)
             {

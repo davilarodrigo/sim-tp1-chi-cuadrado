@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAnalisisChiCuadrado));
             this.dgvMuestra = new System.Windows.Forms.DataGridView();
             this.txtLista = new System.Windows.Forms.TextBox();
             this.dgvFrecuencia = new System.Windows.Forms.DataGridView();
@@ -45,14 +46,22 @@
             this.txtTamañoMuestraAGenerar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnMostrarGrafico = new System.Windows.Forms.Button();
             this.grpAgregarValor = new System.Windows.Forms.GroupBox();
             this.lblTamañoMuestra = new System.Windows.Forms.Label();
+            this.groupBoxMediaVarianza = new System.Windows.Forms.GroupBox();
+            this.lblVarianzaEsperada = new System.Windows.Forms.Label();
+            this.lblVarianzaObservada = new System.Windows.Forms.Label();
+            this.lblMediaEsperada = new System.Windows.Forms.Label();
+            this.lblMediaObservada = new System.Windows.Forms.Label();
+            this.buttonVolver = new System.Windows.Forms.Button();
+            this.buttonExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrecuencia)).BeginInit();
             this.grpIntervalos.SuspendLayout();
             this.grpGeneradorMuestra.SuspendLayout();
             this.grpAgregarValor.SuspendLayout();
+            this.groupBoxMediaVarianza.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMuestra
@@ -60,8 +69,8 @@
             this.dgvMuestra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMuestra.Location = new System.Drawing.Point(232, 12);
             this.dgvMuestra.Name = "dgvMuestra";
-            this.dgvMuestra.Size = new System.Drawing.Size(177, 295);
-            this.dgvMuestra.TabIndex = 0;
+            this.dgvMuestra.Size = new System.Drawing.Size(177, 399);
+            this.dgvMuestra.TabIndex = 5;
             this.dgvMuestra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtLista
@@ -69,7 +78,7 @@
             this.txtLista.Location = new System.Drawing.Point(6, 19);
             this.txtLista.Name = "txtLista";
             this.txtLista.Size = new System.Drawing.Size(202, 20);
-            this.txtLista.TabIndex = 1;
+            this.txtLista.TabIndex = 0;
             this.txtLista.TextChanged += new System.EventHandler(this.txtLista_TextChanged);
             this.txtLista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLista_KeyDown);
             this.txtLista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista_KeyPress);
@@ -79,8 +88,8 @@
             this.dgvFrecuencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFrecuencia.Location = new System.Drawing.Point(415, 12);
             this.dgvFrecuencia.Name = "dgvFrecuencia";
-            this.dgvFrecuencia.Size = new System.Drawing.Size(373, 271);
-            this.dgvFrecuencia.TabIndex = 0;
+            this.dgvFrecuencia.Size = new System.Drawing.Size(373, 341);
+            this.dgvFrecuencia.TabIndex = 6;
             this.dgvFrecuencia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnTestChiCuadrado
@@ -88,7 +97,7 @@
             this.btnTestChiCuadrado.Location = new System.Drawing.Point(12, 284);
             this.btnTestChiCuadrado.Name = "btnTestChiCuadrado";
             this.btnTestChiCuadrado.Size = new System.Drawing.Size(214, 23);
-            this.btnTestChiCuadrado.TabIndex = 2;
+            this.btnTestChiCuadrado.TabIndex = 3;
             this.btnTestChiCuadrado.Text = "Analizar Muestra";
             this.btnTestChiCuadrado.UseVisualStyleBackColor = true;
             this.btnTestChiCuadrado.Click += new System.EventHandler(this.btnTestChi_Click);
@@ -96,11 +105,13 @@
             // lblChiCuadrado
             // 
             this.lblChiCuadrado.AutoSize = true;
-            this.lblChiCuadrado.Location = new System.Drawing.Point(540, 294);
+            this.lblChiCuadrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChiCuadrado.Location = new System.Drawing.Point(425, 388);
             this.lblChiCuadrado.Name = "lblChiCuadrado";
-            this.lblChiCuadrado.Size = new System.Drawing.Size(71, 13);
+            this.lblChiCuadrado.Size = new System.Drawing.Size(83, 13);
             this.lblChiCuadrado.TabIndex = 4;
             this.lblChiCuadrado.Text = "Chi Cuadrado";
+            this.lblChiCuadrado.DoubleClick += new System.EventHandler(this.lblChiCuadrado_DoubleClick);
             // 
             // grpIntervalos
             // 
@@ -111,7 +122,7 @@
             this.grpIntervalos.Location = new System.Drawing.Point(12, 3);
             this.grpIntervalos.Name = "grpIntervalos";
             this.grpIntervalos.Size = new System.Drawing.Size(214, 103);
-            this.grpIntervalos.TabIndex = 5;
+            this.grpIntervalos.TabIndex = 0;
             this.grpIntervalos.TabStop = false;
             this.grpIntervalos.Text = "Cantidad de Intervalos";
             this.grpIntervalos.Enter += new System.EventHandler(this.grpIntervalos_Enter);
@@ -131,7 +142,7 @@
             this.txtCantidadIntervalos.Location = new System.Drawing.Point(108, 69);
             this.txtCantidadIntervalos.Name = "txtCantidadIntervalos";
             this.txtCantidadIntervalos.Size = new System.Drawing.Size(100, 20);
-            this.txtCantidadIntervalos.TabIndex = 1;
+            this.txtCantidadIntervalos.TabIndex = 2;
             this.txtCantidadIntervalos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadIntervalos_KeyPress);
             // 
             // rdbAutomatico
@@ -143,7 +154,7 @@
             this.rdbAutomatico.Size = new System.Drawing.Size(140, 17);
             this.rdbAutomatico.TabIndex = 0;
             this.rdbAutomatico.TabStop = true;
-            this.rdbAutomatico.Text = "Definir Automaticamente";
+            this.rdbAutomatico.Text = "Definir Automáticamente";
             this.rdbAutomatico.UseVisualStyleBackColor = true;
             this.rdbAutomatico.CheckedChanged += new System.EventHandler(this.rdbAutomatico_CheckedChanged);
             // 
@@ -153,7 +164,7 @@
             this.rdbManual.Location = new System.Drawing.Point(24, 49);
             this.rdbManual.Name = "rdbManual";
             this.rdbManual.Size = new System.Drawing.Size(122, 17);
-            this.rdbManual.TabIndex = 0;
+            this.rdbManual.TabIndex = 1;
             this.rdbManual.Text = "Definir Manualmente";
             this.rdbManual.UseVisualStyleBackColor = true;
             this.rdbManual.CheckedChanged += new System.EventHandler(this.rdbManual_CheckedChanged);
@@ -169,9 +180,9 @@
             this.grpGeneradorMuestra.Location = new System.Drawing.Point(12, 112);
             this.grpGeneradorMuestra.Name = "grpGeneradorMuestra";
             this.grpGeneradorMuestra.Size = new System.Drawing.Size(214, 112);
-            this.grpGeneradorMuestra.TabIndex = 6;
+            this.grpGeneradorMuestra.TabIndex = 1;
             this.grpGeneradorMuestra.TabStop = false;
-            this.grpGeneradorMuestra.Text = "Generar Muestra de Numeros Aleatorios";
+            this.grpGeneradorMuestra.Text = "Generar Muestra de Números Aleatorios";
             // 
             // btnEliminarMuestra
             // 
@@ -207,7 +218,7 @@
             this.txtTamañoMuestraAGenerar.Location = new System.Drawing.Point(108, 29);
             this.txtTamañoMuestraAGenerar.Name = "txtTamañoMuestraAGenerar";
             this.txtTamañoMuestraAGenerar.Size = new System.Drawing.Size(100, 20);
-            this.txtTamañoMuestraAGenerar.TabIndex = 1;
+            this.txtTamañoMuestraAGenerar.TabIndex = 0;
             this.txtTamañoMuestraAGenerar.Text = "30";
             this.txtTamañoMuestraAGenerar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
@@ -229,15 +240,16 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Cantidad a Generar";
             // 
-            // button2
+            // btnMostrarGrafico
             // 
-            this.button2.Location = new System.Drawing.Point(672, 289);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Mostrar Grafico";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnMostrarGrafico.Enabled = false;
+            this.btnMostrarGrafico.Location = new System.Drawing.Point(698, 359);
+            this.btnMostrarGrafico.Name = "btnMostrarGrafico";
+            this.btnMostrarGrafico.Size = new System.Drawing.Size(90, 23);
+            this.btnMostrarGrafico.TabIndex = 4;
+            this.btnMostrarGrafico.Text = "Mostrar Gráfico";
+            this.btnMostrarGrafico.UseVisualStyleBackColor = true;
+            this.btnMostrarGrafico.Click += new System.EventHandler(this.button2_Click);
             // 
             // grpAgregarValor
             // 
@@ -245,40 +257,114 @@
             this.grpAgregarValor.Location = new System.Drawing.Point(12, 230);
             this.grpAgregarValor.Name = "grpAgregarValor";
             this.grpAgregarValor.Size = new System.Drawing.Size(214, 48);
-            this.grpAgregarValor.TabIndex = 9;
+            this.grpAgregarValor.TabIndex = 2;
             this.grpAgregarValor.TabStop = false;
-            this.grpAgregarValor.Text = "Agregar Valor Especifico a la Muestra";
+            this.grpAgregarValor.Text = "Agregar Valor Específico a la Muestra";
             this.grpAgregarValor.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // lblTamañoMuestra
             // 
             this.lblTamañoMuestra.AutoSize = true;
-            this.lblTamañoMuestra.Location = new System.Drawing.Point(425, 294);
+            this.lblTamañoMuestra.Location = new System.Drawing.Point(425, 364);
             this.lblTamañoMuestra.Name = "lblTamañoMuestra";
             this.lblTamañoMuestra.Size = new System.Drawing.Size(87, 13);
             this.lblTamañoMuestra.TabIndex = 10;
             this.lblTamañoMuestra.Text = "Tamaño Muestra";
             // 
+            // groupBoxMediaVarianza
+            // 
+            this.groupBoxMediaVarianza.Controls.Add(this.lblVarianzaEsperada);
+            this.groupBoxMediaVarianza.Controls.Add(this.lblVarianzaObservada);
+            this.groupBoxMediaVarianza.Controls.Add(this.lblMediaEsperada);
+            this.groupBoxMediaVarianza.Controls.Add(this.lblMediaObservada);
+            this.groupBoxMediaVarianza.Location = new System.Drawing.Point(13, 314);
+            this.groupBoxMediaVarianza.Name = "groupBoxMediaVarianza";
+            this.groupBoxMediaVarianza.Size = new System.Drawing.Size(213, 97);
+            this.groupBoxMediaVarianza.TabIndex = 11;
+            this.groupBoxMediaVarianza.TabStop = false;
+            this.groupBoxMediaVarianza.Text = "Media y Varianza";
+            // 
+            // lblVarianzaEsperada
+            // 
+            this.lblVarianzaEsperada.AutoSize = true;
+            this.lblVarianzaEsperada.Location = new System.Drawing.Point(17, 79);
+            this.lblVarianzaEsperada.Name = "lblVarianzaEsperada";
+            this.lblVarianzaEsperada.Size = new System.Drawing.Size(99, 13);
+            this.lblVarianzaEsperada.TabIndex = 3;
+            this.lblVarianzaEsperada.Text = "Varianza Esperada:";
+            // 
+            // lblVarianzaObservada
+            // 
+            this.lblVarianzaObservada.AutoSize = true;
+            this.lblVarianzaObservada.Location = new System.Drawing.Point(10, 60);
+            this.lblVarianzaObservada.Name = "lblVarianzaObservada";
+            this.lblVarianzaObservada.Size = new System.Drawing.Size(106, 13);
+            this.lblVarianzaObservada.TabIndex = 2;
+            this.lblVarianzaObservada.Text = "Varianza Observada:";
+            // 
+            // lblMediaEsperada
+            // 
+            this.lblMediaEsperada.AutoSize = true;
+            this.lblMediaEsperada.Location = new System.Drawing.Point(29, 41);
+            this.lblMediaEsperada.Name = "lblMediaEsperada";
+            this.lblMediaEsperada.Size = new System.Drawing.Size(87, 13);
+            this.lblMediaEsperada.TabIndex = 1;
+            this.lblMediaEsperada.Text = "Media Esperada:";
+            // 
+            // lblMediaObservada
+            // 
+            this.lblMediaObservada.AutoSize = true;
+            this.lblMediaObservada.Location = new System.Drawing.Point(22, 22);
+            this.lblMediaObservada.Name = "lblMediaObservada";
+            this.lblMediaObservada.Size = new System.Drawing.Size(94, 13);
+            this.lblMediaObservada.TabIndex = 0;
+            this.lblMediaObservada.Text = "Media Observada:";
+            // 
+            // buttonVolver
+            // 
+            this.buttonVolver.Location = new System.Drawing.Point(698, 388);
+            this.buttonVolver.Name = "buttonVolver";
+            this.buttonVolver.Size = new System.Drawing.Size(90, 23);
+            this.buttonVolver.TabIndex = 12;
+            this.buttonVolver.Text = "Volver";
+            this.buttonVolver.UseVisualStyleBackColor = true;
+            this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
+            // 
+            // buttonExportarExcel
+            // 
+            this.buttonExportarExcel.Enabled = false;
+            this.buttonExportarExcel.Location = new System.Drawing.Point(597, 359);
+            this.buttonExportarExcel.Name = "buttonExportarExcel";
+            this.buttonExportarExcel.Size = new System.Drawing.Size(95, 23);
+            this.buttonExportarExcel.TabIndex = 13;
+            this.buttonExportarExcel.Text = "Exportar a Excel";
+            this.buttonExportarExcel.UseVisualStyleBackColor = true;
+            this.buttonExportarExcel.Click += new System.EventHandler(this.buttonExportarExcel_Click);
+            // 
             // FrmAnalisisChiCuadrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 317);
+            this.ClientSize = new System.Drawing.Size(800, 423);
+            this.Controls.Add(this.buttonExportarExcel);
+            this.Controls.Add(this.buttonVolver);
+            this.Controls.Add(this.groupBoxMediaVarianza);
             this.Controls.Add(this.lblTamañoMuestra);
             this.Controls.Add(this.grpAgregarValor);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnMostrarGrafico);
             this.Controls.Add(this.grpGeneradorMuestra);
             this.Controls.Add(this.grpIntervalos);
             this.Controls.Add(this.lblChiCuadrado);
             this.Controls.Add(this.btnTestChiCuadrado);
             this.Controls.Add(this.dgvFrecuencia);
             this.Controls.Add(this.dgvMuestra);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(816, 356);
+            this.MaximumSize = new System.Drawing.Size(816, 462);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(816, 356);
+            this.MinimumSize = new System.Drawing.Size(816, 462);
             this.Name = "FrmAnalisisChiCuadrado";
-            this.Text = "Form1";
+            this.Text = "Analizador de Muestras";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrecuencia)).EndInit();
@@ -288,6 +374,8 @@
             this.grpGeneradorMuestra.PerformLayout();
             this.grpAgregarValor.ResumeLayout(false);
             this.grpAgregarValor.PerformLayout();
+            this.groupBoxMediaVarianza.ResumeLayout(false);
+            this.groupBoxMediaVarianza.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,12 +397,19 @@
         private System.Windows.Forms.Button btnGenerarNumerosAleatorios;
         private System.Windows.Forms.TextBox txtTamañoMuestraAGenerar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnMostrarGrafico;
         private System.Windows.Forms.GroupBox grpAgregarValor;
         private System.Windows.Forms.Label lblTamañoMuestra;
         private System.Windows.Forms.Button btnEliminarMuestra;
         private System.Windows.Forms.TextBox txtDecimales;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBoxMediaVarianza;
+        private System.Windows.Forms.Label lblVarianzaEsperada;
+        private System.Windows.Forms.Label lblVarianzaObservada;
+        private System.Windows.Forms.Label lblMediaEsperada;
+        private System.Windows.Forms.Label lblMediaObservada;
+        private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.Button buttonExportarExcel;
     }
 }
 

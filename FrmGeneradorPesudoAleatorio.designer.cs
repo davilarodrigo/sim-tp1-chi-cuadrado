@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGeneradorPseudoAleatorio));
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtValorRaiz = new System.Windows.Forms.TextBox();
@@ -53,11 +54,13 @@
             this.txtM = new System.Windows.Forms.TextBox();
             this.txtA = new System.Windows.Forms.TextBox();
             this.lblIteracion = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGenerarAdicional = new System.Windows.Forms.Button();
             this.dataGridViewValoresLista = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAnalisiChi = new System.Windows.Forms.Button();
+            this.buttonVolver = new System.Windows.Forms.Button();
+            this.buttonExportarExcel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewValoresLista)).BeginInit();
@@ -70,7 +73,7 @@
             this.btnGenerar.Location = new System.Drawing.Point(15, 219);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(165, 27);
-            this.btnGenerar.TabIndex = 6;
+            this.btnGenerar.TabIndex = 2;
             this.btnGenerar.Text = "Generar secuencia";
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.button1_Click);
@@ -80,9 +83,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Valor Raiz";
+            this.label1.Text = "Valor Raíz";
             // 
             // txtValorRaiz
             // 
@@ -97,11 +100,11 @@
             // 
             this.lblNumero.AutoSize = true;
             this.lblNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblNumero.Location = new System.Drawing.Point(21, 321);
+            this.lblNumero.Location = new System.Drawing.Point(17, 342);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(169, 24);
             this.lblNumero.TabIndex = 3;
-            this.lblNumero.Text = "Numero Generado";
+            this.lblNumero.Text = "Número Generado";
             this.lblNumero.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnGenerarNuevaLista
@@ -109,7 +112,7 @@
             this.btnGenerarNuevaLista.Location = new System.Drawing.Point(15, 248);
             this.btnGenerarNuevaLista.Name = "btnGenerarNuevaLista";
             this.btnGenerarNuevaLista.Size = new System.Drawing.Size(165, 27);
-            this.btnGenerarNuevaLista.TabIndex = 5;
+            this.btnGenerarNuevaLista.TabIndex = 4;
             this.btnGenerarNuevaLista.Text = "Generar Nueva Lista";
             this.btnGenerarNuevaLista.UseVisualStyleBackColor = true;
             this.btnGenerarNuevaLista.Click += new System.EventHandler(this.btnGenerarNuevaLista_Click);
@@ -119,9 +122,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 293);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Raiz Utilizada:";
+            this.label2.Text = "Raíz Utilizada:";
             // 
             // label3
             // 
@@ -181,10 +184,10 @@
             // 
             this.groupBox1.Controls.Add(this.radioMultiplicativo);
             this.groupBox1.Controls.Add(this.radioLineal);
-            this.groupBox1.Location = new System.Drawing.Point(15, 90);
+            this.groupBox1.Location = new System.Drawing.Point(8, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(164, 69);
-            this.groupBox1.TabIndex = 10;
+            this.groupBox1.Size = new System.Drawing.Size(171, 69);
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Metodo Congruente";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -216,7 +219,7 @@
             // lblMetodo
             // 
             this.lblMetodo.AutoSize = true;
-            this.lblMetodo.Location = new System.Drawing.Point(229, 293);
+            this.lblMetodo.Location = new System.Drawing.Point(12, 316);
             this.lblMetodo.Name = "lblMetodo";
             this.lblMetodo.Size = new System.Drawing.Size(46, 13);
             this.lblMetodo.TabIndex = 6;
@@ -239,19 +242,21 @@
             this.groupBox2.Controls.Add(this.radioAyM);
             this.groupBox2.Location = new System.Drawing.Point(189, 90);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(153, 69);
-            this.groupBox2.TabIndex = 10;
+            this.groupBox2.Size = new System.Drawing.Size(159, 69);
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Elegir tipo de Parametro";
+            this.groupBox2.Text = "Elegir tipo de Parámetro";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // radioKyG
             // 
             this.radioKyG.AutoSize = true;
+            this.radioKyG.Checked = true;
             this.radioKyG.Location = new System.Drawing.Point(13, 42);
             this.radioKyG.Name = "radioKyG";
             this.radioKyG.Size = new System.Drawing.Size(51, 17);
-            this.radioKyG.TabIndex = 0;
+            this.radioKyG.TabIndex = 1;
+            this.radioKyG.TabStop = true;
             this.radioKyG.Text = "K y G";
             this.radioKyG.UseVisualStyleBackColor = true;
             this.radioKyG.CheckedChanged += new System.EventHandler(this.radioKyG_CheckedChanged);
@@ -259,12 +264,10 @@
             // radioAyM
             // 
             this.radioAyM.AutoSize = true;
-            this.radioAyM.Checked = true;
             this.radioAyM.Location = new System.Drawing.Point(13, 19);
             this.radioAyM.Name = "radioAyM";
             this.radioAyM.Size = new System.Drawing.Size(52, 17);
-            this.radioAyM.TabIndex = 1;
-            this.radioAyM.TabStop = true;
+            this.radioAyM.TabIndex = 0;
             this.radioAyM.Text = "A y M";
             this.radioAyM.UseVisualStyleBackColor = true;
             this.radioAyM.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
@@ -309,40 +312,40 @@
             // lblIteracion
             // 
             this.lblIteracion.AutoSize = true;
-            this.lblIteracion.Location = new System.Drawing.Point(139, 293);
+            this.lblIteracion.Location = new System.Drawing.Point(184, 293);
             this.lblIteracion.Name = "lblIteracion";
             this.lblIteracion.Size = new System.Drawing.Size(51, 13);
             this.lblIteracion.TabIndex = 6;
-            this.lblIteracion.Text = "Iteracion:";
+            this.lblIteracion.Text = "Iteración:";
             // 
-            // button1
+            // btnGenerarAdicional
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(189, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 27);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Generar Numero Adicional";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.btnGenerarAdicional.Enabled = false;
+            this.btnGenerarAdicional.Location = new System.Drawing.Point(189, 219);
+            this.btnGenerarAdicional.Name = "btnGenerarAdicional";
+            this.btnGenerarAdicional.Size = new System.Drawing.Size(153, 27);
+            this.btnGenerarAdicional.TabIndex = 3;
+            this.btnGenerarAdicional.Text = "Generar Número Adicional";
+            this.btnGenerarAdicional.UseVisualStyleBackColor = true;
+            this.btnGenerarAdicional.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // dataGridViewValoresLista
             // 
             this.dataGridViewValoresLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewValoresLista.Location = new System.Drawing.Point(354, 12);
             this.dataGridViewValoresLista.Name = "dataGridViewValoresLista";
-            this.dataGridViewValoresLista.Size = new System.Drawing.Size(248, 409);
+            this.dataGridViewValoresLista.Size = new System.Drawing.Size(248, 395);
             this.dataGridViewValoresLista.TabIndex = 15;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtLongitudLista);
-            this.groupBox3.Location = new System.Drawing.Point(15, 165);
+            this.groupBox3.Location = new System.Drawing.Point(8, 165);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(327, 48);
-            this.groupBox3.TabIndex = 16;
+            this.groupBox3.Size = new System.Drawing.Size(340, 48);
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Cantidad de numeros a generar";
+            this.groupBox3.Text = "Cantidad de números a generar";
             // 
             // groupBox4
             // 
@@ -361,29 +364,52 @@
             this.groupBox4.Location = new System.Drawing.Point(8, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(340, 84);
-            this.groupBox4.TabIndex = 17;
+            this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             // 
             // btnAnalisiChi
             // 
-            this.btnAnalisiChi.Location = new System.Drawing.Point(195, 394);
+            this.btnAnalisiChi.Enabled = false;
+            this.btnAnalisiChi.Location = new System.Drawing.Point(15, 380);
             this.btnAnalisiChi.Name = "btnAnalisiChi";
-            this.btnAnalisiChi.Size = new System.Drawing.Size(153, 27);
-            this.btnAnalisiChi.TabIndex = 18;
-            this.btnAnalisiChi.Text = "Análisi Chi Cuadrado";
+            this.btnAnalisiChi.Size = new System.Drawing.Size(146, 27);
+            this.btnAnalisiChi.TabIndex = 5;
+            this.btnAnalisiChi.Text = "Análisis de Chi Cuadrado";
             this.btnAnalisiChi.UseVisualStyleBackColor = true;
             this.btnAnalisiChi.Click += new System.EventHandler(this.btnAnalisiChi_Click);
+            // 
+            // buttonVolver
+            // 
+            this.buttonVolver.Location = new System.Drawing.Point(291, 380);
+            this.buttonVolver.Name = "buttonVolver";
+            this.buttonVolver.Size = new System.Drawing.Size(57, 27);
+            this.buttonVolver.TabIndex = 8;
+            this.buttonVolver.Text = "Volver";
+            this.buttonVolver.UseVisualStyleBackColor = true;
+            this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
+            // 
+            // buttonExportarExcel
+            // 
+            this.buttonExportarExcel.Location = new System.Drawing.Point(167, 380);
+            this.buttonExportarExcel.Name = "buttonExportarExcel";
+            this.buttonExportarExcel.Size = new System.Drawing.Size(118, 27);
+            this.buttonExportarExcel.TabIndex = 6;
+            this.buttonExportarExcel.Text = "Exportar a Excel";
+            this.buttonExportarExcel.UseVisualStyleBackColor = true;
+            this.buttonExportarExcel.Click += new System.EventHandler(this.buttonExportarExcel_Click);
             // 
             // FrmGeneradorPseudoAleatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 433);
+            this.ClientSize = new System.Drawing.Size(614, 419);
+            this.Controls.Add(this.buttonExportarExcel);
+            this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.btnAnalisiChi);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dataGridViewValoresLista);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGenerarAdicional);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblIteracion);
@@ -392,10 +418,13 @@
             this.Controls.Add(this.btnGenerarNuevaLista);
             this.Controls.Add(this.lblNumero);
             this.Controls.Add(this.btnGenerar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(630, 458);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(630, 458);
             this.Name = "FrmGeneradorPseudoAleatorio";
-            this.Text = "Form1";
+            this.Text = "Generador de Números Pseudoaleatórios";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -438,11 +467,13 @@
         private System.Windows.Forms.TextBox txtM;
         private System.Windows.Forms.TextBox txtA;
         private System.Windows.Forms.Label lblIteracion;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGenerarAdicional;
         private System.Windows.Forms.DataGridView dataGridViewValoresLista;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnAnalisiChi;
+        private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.Button buttonExportarExcel;
     }
 }
 
