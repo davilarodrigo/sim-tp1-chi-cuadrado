@@ -75,7 +75,7 @@ namespace WindowsFormsApp1
             this.dgvMuestra.Rows.Clear();
             for (int i = 0; i < muestra.Count; i++)
             {
-                dgvMuestra.Rows.Add(muestra[i]);
+                dgvMuestra.Rows.Add(i+1, muestra[i]);
             }
 
         }
@@ -86,8 +86,14 @@ namespace WindowsFormsApp1
             dgvFrecuencia.Rows.Clear();
 
 
-            lblTamañoMuestra.Text = "Tamaño Muestra";
-            lblChiCuadrado.Text = "Chi Cuadrado";
+            lblTamanoMuestra.Text = "Tamaño Muestra";
+            lblChiCuadrado.Text = "Chi Cuadrado:";
+            labelMediaObservada.Text = "-";
+            labelVarianzaObservada.Text = "-";
+            lblMediaEsperada.Text = "Media Esperada:    -";
+            lblVarianzaEsperada.Text = "Varianza Esperada:    -";
+            labelChiCuadrado.Text = "-";
+            labelTamanoMuestra.Text = "-";
 
 
             muestraAnalizada = false;
@@ -128,7 +134,7 @@ namespace WindowsFormsApp1
 
             txtLista.Clear();
             muestra.Add(numero);
-            dgvMuestra.Rows.Add(numero);
+            dgvMuestra.Rows.Add(dgvMuestra.Rows.Count, numero);
         }
 
         void configurarDataGridViews() {
@@ -141,9 +147,11 @@ namespace WindowsFormsApp1
             dgvFrecuencia.Columns[0].Width = 60;
             dgvFrecuencia.Columns[1].Width = 60;
 
-            dgvMuestra.ColumnCount = 1;
-            dgvMuestra.Columns[0].HeaderText = "Muestra";
-            dgvMuestra.Columns[0].Width = 115;
+            dgvMuestra.ColumnCount = 2;
+            dgvMuestra.Columns[1].HeaderText = "Muestra";
+            dgvMuestra.Columns[1].Width = 65;
+            dgvMuestra.Columns[0].HeaderText = "Iterac.";
+            dgvMuestra.Columns[0].Width = 50;
         }
 
      
@@ -191,13 +199,15 @@ namespace WindowsFormsApp1
                 dgvFrecuencia.Rows.Add(limitesInferioresDeIntervalos[i], limitesSuperioresDeIntervalos[i],frecuenciasObservada[i],frecuenciaEsperada);
             }
 
-            lblTamañoMuestra.Text = "Tamaño Muestra = " + muestra.Count.ToString();
-            lblChiCuadrado.Text = "Chi Cuadrado = "+ analizadorDeMuestra.calcularChiCuadrado().ToString();
+            //lblTamanoMuestra.Text = "Tamaño Muestra = " + muestra.Count.ToString();
+            labelTamanoMuestra.Text = muestra.Count.ToString();
+            //lblChiCuadrado.Text = "Chi Cuadrado = "+ analizadorDeMuestra.calcularChiCuadrado().ToString();
+            labelChiCuadrado.Text = analizadorDeMuestra.calcularChiCuadrado().ToString();
 
             muestraAnalizada = true;
 
-            this.lblMediaEsperada.Text += " 0.5";
-            this.lblVarianzaEsperada.Text += " 0.0833";
+            this.lblMediaEsperada.Text = "Media Esperada:    0.5";
+            this.lblVarianzaEsperada.Text = "Varianza Esperada:    0.0833";
             double media;
             double sumatoria = 0;
             for (int i = 0; i < muestra.Count(); i++)
@@ -205,7 +215,8 @@ namespace WindowsFormsApp1
                 sumatoria += muestra[i];
             }
             media = Math.Truncate(sumatoria / Convert.ToDouble(muestra.Count())*10000)/10000;
-            this.lblMediaObservada.Text += " " + media.ToString();
+            //this.lblMediaObservada.Text += " " + media.ToString();
+            this.labelMediaObservada.Text = media.ToString();
 
             double sumatoria2 = 0;
             for (int i = 0; i < muestra.Count(); i++)
@@ -213,7 +224,8 @@ namespace WindowsFormsApp1
                 sumatoria2 += (Math.Pow(muestra[i] - (double)media, 2));
             }
             double varianza = Math.Truncate(sumatoria2 / Convert.ToDouble(muestra.Count()-1) * 10000) / 10000;
-            this.lblVarianzaObservada.Text += " " + varianza.ToString();
+            //this.lblVarianzaObservada.Text += " " + varianza.ToString();
+            this.labelVarianzaObservada.Text = varianza.ToString();
         }
 
 
@@ -330,11 +342,10 @@ namespace WindowsFormsApp1
 
         private void buttonExportarExcel_Click(object sender, EventArgs e)
         {
-            FrmGrafico grafico = new FrmGrafico(frecuenciasObservada, frecuenciaEsperada);
-            //grafico.recibirParametro();
-            var chart1 = grafico.devolverGrafico();
-            grafico.Dispose();
-            chart1.SaveImage("E:\\Rodolfo\\FACULTAD\\4 Año\\Simulación\\parte2-TP1\\hola.png", ChartImageFormat.Png);
+            //FrmGrafico grafico = new FrmGrafico(frecuenciasObservada, frecuenciaEsperada);
+            //Chart chart1 = grafico.devolverGrafico();
+            //grafico.Dispose();
+            //chart1.SaveImage(".\\hola.png", ChartImageFormat.Png);
 
             // creating Excel Application  
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -364,9 +375,46 @@ namespace WindowsFormsApp1
                 }
             }
 
-            worksheet.Shapes.AddPicture("E:\\Rodolfo\\FACULTAD\\4 Año\\Simulación\\parte2 - TP1\\hola.jpg", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, 50, 50, 300, 45);
+            worksheet.Cells[1, 5] = "Observada";
+            worksheet.Cells[1, 6] = "Esperada";
+            worksheet.Cells[2, 4] = "Media";
+            worksheet.Cells[3, 4] = "Varianza";
+            worksheet.Cells[2, 5] = this.labelMediaObservada.Text;
+            worksheet.Cells[2, 6] = this.labelVarianzaObservada.Text;
+            worksheet.Cells[3, 5] = "0.5";
+            worksheet.Cells[3, 6] = "0.0833";
+            worksheet.Cells[2, 9] = "Valor de Chi";
+            worksheet.Cells[2, 10] = this.labelChiCuadrado.Text;
+
+            //worksheet.Columns.Width = 100;
+
+            for (int i = 1; i < this.dgvFrecuencia.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[5, i+3] = this.dgvFrecuencia.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < this.dgvFrecuencia.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < this.dgvFrecuencia.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 6, j + 4] = this.dgvFrecuencia.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+
+            Microsoft.Office.Interop.Excel.Range chartRange;
+
+            Microsoft.Office.Interop.Excel.ChartObjects xlCharts = (Microsoft.Office.Interop.Excel.ChartObjects)worksheet.ChartObjects(Type.Missing);
+            Microsoft.Office.Interop.Excel.ChartObject myChart = (Microsoft.Office.Interop.Excel.ChartObject)xlCharts.Add(475,50,500,300);
+            Microsoft.Office.Interop.Excel.Chart chartPage = myChart.Chart;
+
+            int cantIntervalos = dgvFrecuencia.Rows.Count;
+            chartRange = worksheet.get_Range("F5", "G" + (cantIntervalos+5).ToString());
+            chartPage.SetSourceData(chartRange, System.Reflection.Missing.Value);
+            chartPage.ChartType = Microsoft.Office.Interop.Excel.XlChartType.xlColumnClustered;
+            //myChart.TopLeftCell = worksheet.Cells[3, 10];
+
+            //worksheet.Shapes.AddPicture(".\\hola.jpg", Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, 50, 50, 300, 45);
             // save the application
-            //workbook.SaveAs("E:\\Rodolfo\\FACULTAD\\4 Año\\Simulación\\TP1\\SimulacionTP1\\ExcelOutput\\output"+documentoExcel.ToString()+".xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            //workbook.SaveAs(".\\output"+documentoExcel.ToString()+".xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             //documentoExcel += 1;
             // Exit from the application  
             //app.Quit();

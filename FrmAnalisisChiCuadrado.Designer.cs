@@ -48,7 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnMostrarGrafico = new System.Windows.Forms.Button();
             this.grpAgregarValor = new System.Windows.Forms.GroupBox();
-            this.lblTamañoMuestra = new System.Windows.Forms.Label();
+            this.lblTamanoMuestra = new System.Windows.Forms.Label();
             this.groupBoxMediaVarianza = new System.Windows.Forms.GroupBox();
             this.lblVarianzaEsperada = new System.Windows.Forms.Label();
             this.lblVarianzaObservada = new System.Windows.Forms.Label();
@@ -56,6 +56,10 @@
             this.lblMediaObservada = new System.Windows.Forms.Label();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonExportarExcel = new System.Windows.Forms.Button();
+            this.labelMediaObservada = new System.Windows.Forms.Label();
+            this.labelVarianzaObservada = new System.Windows.Forms.Label();
+            this.labelChiCuadrado = new System.Windows.Forms.Label();
+            this.labelTamanoMuestra = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrecuencia)).BeginInit();
             this.grpIntervalos.SuspendLayout();
@@ -108,9 +112,9 @@
             this.lblChiCuadrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChiCuadrado.Location = new System.Drawing.Point(425, 388);
             this.lblChiCuadrado.Name = "lblChiCuadrado";
-            this.lblChiCuadrado.Size = new System.Drawing.Size(83, 13);
+            this.lblChiCuadrado.Size = new System.Drawing.Size(87, 13);
             this.lblChiCuadrado.TabIndex = 4;
-            this.lblChiCuadrado.Text = "Chi Cuadrado";
+            this.lblChiCuadrado.Text = "Chi Cuadrado:";
             this.lblChiCuadrado.DoubleClick += new System.EventHandler(this.lblChiCuadrado_DoubleClick);
             // 
             // grpIntervalos
@@ -262,17 +266,19 @@
             this.grpAgregarValor.Text = "Agregar Valor Específico a la Muestra";
             this.grpAgregarValor.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // lblTamañoMuestra
+            // lblTamanoMuestra
             // 
-            this.lblTamañoMuestra.AutoSize = true;
-            this.lblTamañoMuestra.Location = new System.Drawing.Point(425, 364);
-            this.lblTamañoMuestra.Name = "lblTamañoMuestra";
-            this.lblTamañoMuestra.Size = new System.Drawing.Size(87, 13);
-            this.lblTamañoMuestra.TabIndex = 10;
-            this.lblTamañoMuestra.Text = "Tamaño Muestra";
+            this.lblTamanoMuestra.AutoSize = true;
+            this.lblTamanoMuestra.Location = new System.Drawing.Point(425, 364);
+            this.lblTamanoMuestra.Name = "lblTamanoMuestra";
+            this.lblTamanoMuestra.Size = new System.Drawing.Size(90, 13);
+            this.lblTamanoMuestra.TabIndex = 10;
+            this.lblTamanoMuestra.Text = "Tamaño Muestra:";
             // 
             // groupBoxMediaVarianza
             // 
+            this.groupBoxMediaVarianza.Controls.Add(this.labelVarianzaObservada);
+            this.groupBoxMediaVarianza.Controls.Add(this.labelMediaObservada);
             this.groupBoxMediaVarianza.Controls.Add(this.lblVarianzaEsperada);
             this.groupBoxMediaVarianza.Controls.Add(this.lblVarianzaObservada);
             this.groupBoxMediaVarianza.Controls.Add(this.lblMediaEsperada);
@@ -289,9 +295,9 @@
             this.lblVarianzaEsperada.AutoSize = true;
             this.lblVarianzaEsperada.Location = new System.Drawing.Point(17, 79);
             this.lblVarianzaEsperada.Name = "lblVarianzaEsperada";
-            this.lblVarianzaEsperada.Size = new System.Drawing.Size(99, 13);
+            this.lblVarianzaEsperada.Size = new System.Drawing.Size(114, 13);
             this.lblVarianzaEsperada.TabIndex = 3;
-            this.lblVarianzaEsperada.Text = "Varianza Esperada:";
+            this.lblVarianzaEsperada.Text = "Varianza Esperada:    -";
             // 
             // lblVarianzaObservada
             // 
@@ -307,9 +313,9 @@
             this.lblMediaEsperada.AutoSize = true;
             this.lblMediaEsperada.Location = new System.Drawing.Point(29, 41);
             this.lblMediaEsperada.Name = "lblMediaEsperada";
-            this.lblMediaEsperada.Size = new System.Drawing.Size(87, 13);
+            this.lblMediaEsperada.Size = new System.Drawing.Size(102, 13);
             this.lblMediaEsperada.TabIndex = 1;
-            this.lblMediaEsperada.Text = "Media Esperada:";
+            this.lblMediaEsperada.Text = "Media Esperada:    -";
             // 
             // lblMediaObservada
             // 
@@ -341,15 +347,54 @@
             this.buttonExportarExcel.UseVisualStyleBackColor = true;
             this.buttonExportarExcel.Click += new System.EventHandler(this.buttonExportarExcel_Click);
             // 
+            // labelMediaObservada
+            // 
+            this.labelMediaObservada.AutoSize = true;
+            this.labelMediaObservada.Location = new System.Drawing.Point(122, 22);
+            this.labelMediaObservada.Name = "labelMediaObservada";
+            this.labelMediaObservada.Size = new System.Drawing.Size(10, 13);
+            this.labelMediaObservada.TabIndex = 4;
+            this.labelMediaObservada.Text = "-";
+            // 
+            // labelVarianzaObservada
+            // 
+            this.labelVarianzaObservada.AutoSize = true;
+            this.labelVarianzaObservada.Location = new System.Drawing.Point(122, 60);
+            this.labelVarianzaObservada.Name = "labelVarianzaObservada";
+            this.labelVarianzaObservada.Size = new System.Drawing.Size(10, 13);
+            this.labelVarianzaObservada.TabIndex = 5;
+            this.labelVarianzaObservada.Text = "-";
+            // 
+            // labelChiCuadrado
+            // 
+            this.labelChiCuadrado.AutoSize = true;
+            this.labelChiCuadrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChiCuadrado.Location = new System.Drawing.Point(518, 388);
+            this.labelChiCuadrado.Name = "labelChiCuadrado";
+            this.labelChiCuadrado.Size = new System.Drawing.Size(11, 13);
+            this.labelChiCuadrado.TabIndex = 14;
+            this.labelChiCuadrado.Text = "-";
+            // 
+            // labelTamanoMuestra
+            // 
+            this.labelTamanoMuestra.AutoSize = true;
+            this.labelTamanoMuestra.Location = new System.Drawing.Point(518, 364);
+            this.labelTamanoMuestra.Name = "labelTamanoMuestra";
+            this.labelTamanoMuestra.Size = new System.Drawing.Size(10, 13);
+            this.labelTamanoMuestra.TabIndex = 15;
+            this.labelTamanoMuestra.Text = "-";
+            // 
             // FrmAnalisisChiCuadrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 423);
+            this.Controls.Add(this.labelTamanoMuestra);
+            this.Controls.Add(this.labelChiCuadrado);
             this.Controls.Add(this.buttonExportarExcel);
             this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.groupBoxMediaVarianza);
-            this.Controls.Add(this.lblTamañoMuestra);
+            this.Controls.Add(this.lblTamanoMuestra);
             this.Controls.Add(this.grpAgregarValor);
             this.Controls.Add(this.btnMostrarGrafico);
             this.Controls.Add(this.grpGeneradorMuestra);
@@ -399,7 +444,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnMostrarGrafico;
         private System.Windows.Forms.GroupBox grpAgregarValor;
-        private System.Windows.Forms.Label lblTamañoMuestra;
+        private System.Windows.Forms.Label lblTamanoMuestra;
         private System.Windows.Forms.Button btnEliminarMuestra;
         private System.Windows.Forms.TextBox txtDecimales;
         private System.Windows.Forms.Label label1;
@@ -410,6 +455,10 @@
         private System.Windows.Forms.Label lblMediaObservada;
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.Button buttonExportarExcel;
+        private System.Windows.Forms.Label labelVarianzaObservada;
+        private System.Windows.Forms.Label labelMediaObservada;
+        private System.Windows.Forms.Label labelChiCuadrado;
+        private System.Windows.Forms.Label labelTamanoMuestra;
     }
 }
 
