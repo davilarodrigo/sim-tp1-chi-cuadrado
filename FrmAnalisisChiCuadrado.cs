@@ -86,8 +86,8 @@ namespace WindowsFormsApp1
             dgvFrecuencia.Rows.Clear();
 
 
-            lblTamanoMuestra.Text = "Tamaño Muestra";
-            lblChiCuadrado.Text = "Chi Cuadrado:";
+            lblTamanoMuestra.Text = "Tamaño Muestra:";
+            lblChiCuadrado.Text = "Estadístico de Prueba:";
             labelMediaObservada.Text = "-";
             labelVarianzaObservada.Text = "-";
             lblMediaEsperada.Text = "Media Esperada:    -";
@@ -138,14 +138,18 @@ namespace WindowsFormsApp1
         }
 
         void configurarDataGridViews() {
-            dgvFrecuencia.ColumnCount = 4;
+            dgvFrecuencia.ColumnCount = 5;
             dgvFrecuencia.Columns[0].HeaderText = "Inicio del Intervalo";
             dgvFrecuencia.Columns[1].HeaderText = "Fin del Intervalo";
             dgvFrecuencia.Columns[2].HeaderText = "Frecuencia Observada";
             dgvFrecuencia.Columns[3].HeaderText = "Frecuencia Esperada";
+            dgvFrecuencia.Columns[4].HeaderText = "Estadístico de Prueba (parcial)";
 
             dgvFrecuencia.Columns[0].Width = 60;
             dgvFrecuencia.Columns[1].Width = 60;
+            dgvFrecuencia.Columns[2].Width = 65;
+            dgvFrecuencia.Columns[3].Width = 65;
+            dgvFrecuencia.Columns[4].Width = 70;
 
             dgvMuestra.ColumnCount = 2;
             dgvMuestra.Columns[1].HeaderText = "Muestra";
@@ -194,17 +198,20 @@ namespace WindowsFormsApp1
 
             frecuenciaEsperada = analizadorDeMuestra.obtenerFrecuenciaEsperada();
 
-            for (int i = 0; i < frecuenciasObservada.Count; i++)
-            {
-                dgvFrecuencia.Rows.Add(limitesInferioresDeIntervalos[i], limitesSuperioresDeIntervalos[i],frecuenciasObservada[i],frecuenciaEsperada);
-            }
-
             //lblTamanoMuestra.Text = "Tamaño Muestra = " + muestra.Count.ToString();
             labelTamanoMuestra.Text = muestra.Count.ToString();
             //lblChiCuadrado.Text = "Chi Cuadrado = "+ analizadorDeMuestra.calcularChiCuadrado().ToString();
             labelChiCuadrado.Text = analizadorDeMuestra.calcularChiCuadrado().ToString();
+            List<double> estadisticosPrueba = analizadorDeMuestra.obtenerEstadisticoPrueba();
+
+            for (int i = 0; i < frecuenciasObservada.Count; i++)
+            {
+                dgvFrecuencia.Rows.Add(limitesInferioresDeIntervalos[i], limitesSuperioresDeIntervalos[i],frecuenciasObservada[i],frecuenciaEsperada, estadisticosPrueba[i]);
+            }
 
             muestraAnalizada = true;
+
+            this.labelEntrarTabla.Visible = true;
 
             this.lblMediaEsperada.Text = "Media Esperada:    0.5";
             this.lblVarianzaEsperada.Text = "Varianza Esperada:    0.0833";
@@ -315,6 +322,9 @@ namespace WindowsFormsApp1
         {
             limpiarMuestra();
             btnTestChiCuadrado.Enabled = false;
+            buttonExportarExcel.Enabled = false;
+            btnMostrarGrafico.Enabled = false;
+            this.labelEntrarTabla.Visible = false;
         }
 
         private void btnGenerarNumerosAleatorios_Click(object sender, EventArgs e)
@@ -383,7 +393,7 @@ namespace WindowsFormsApp1
             worksheet.Cells[2, 6] = this.labelVarianzaObservada.Text;
             worksheet.Cells[3, 5] = "0.5";
             worksheet.Cells[3, 6] = "0.0833";
-            worksheet.Cells[2, 9] = "Valor de Chi";
+            worksheet.Cells[2, 9] = "Estadístico de Prueba";
             worksheet.Cells[2, 10] = this.labelChiCuadrado.Text;
 
             //worksheet.Columns.Width = 100;
@@ -403,7 +413,7 @@ namespace WindowsFormsApp1
             Microsoft.Office.Interop.Excel.Range chartRange;
 
             Microsoft.Office.Interop.Excel.ChartObjects xlCharts = (Microsoft.Office.Interop.Excel.ChartObjects)worksheet.ChartObjects(Type.Missing);
-            Microsoft.Office.Interop.Excel.ChartObject myChart = (Microsoft.Office.Interop.Excel.ChartObject)xlCharts.Add(475,50,500,300);
+            Microsoft.Office.Interop.Excel.ChartObject myChart = (Microsoft.Office.Interop.Excel.ChartObject)xlCharts.Add(500,100,500,300);
             Microsoft.Office.Interop.Excel.Chart chartPage = myChart.Chart;
 
             int cantIntervalos = dgvFrecuencia.Rows.Count;

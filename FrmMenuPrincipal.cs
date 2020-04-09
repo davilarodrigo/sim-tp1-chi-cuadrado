@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,14 @@ namespace WindowsFormsApp1
 
         private void buttonSalir_Click(object sender, EventArgs e)
         {
+            foreach (Process clsProcess in Process.GetProcesses())
+            {
+                if (clsProcess.ProcessName.Equals("EXCEL"))
+                {
+                    clsProcess.Kill();
+                    //break;
+                }
+            }
             this.Dispose();
         }
     }

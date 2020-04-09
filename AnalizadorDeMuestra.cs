@@ -96,6 +96,23 @@ namespace WindowsFormsApp1
             return frecuenciaObservada;
         }
 
+        public List<double> obtenerEstadisticoPrueba()
+        {
+            int frecuenciaEsperada = obtenerFrecuenciaEsperada();
+
+            List<double> estadisticosPrueba = new List<double>();
+            double sumatoria = 0;
+
+            for (int i = 0; i < k; i++)
+            {
+                sumatoria = (Math.Pow(frecuenciaObservada[i] - (double)frecuenciaEsperada, 2));
+                sumatoria /= (double)frecuenciaEsperada;
+                estadisticosPrueba.Add(Math.Truncate(sumatoria * 100000) / 100000);
+            }
+
+            return estadisticosPrueba;
+        }
+
 
     }
 }

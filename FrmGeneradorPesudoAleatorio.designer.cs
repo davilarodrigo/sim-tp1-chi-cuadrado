@@ -403,6 +403,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 419);
+            this.ControlBox = false;
             this.Controls.Add(this.buttonExportarExcel);
             this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.btnAnalisiChi);
